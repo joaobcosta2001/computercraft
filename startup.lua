@@ -91,8 +91,6 @@ function decomposeMessage(message)
 end
 
 
-function
-
 selectedOption = 0
 while true do
     drawStartScreen(selectedOption)
@@ -165,8 +163,8 @@ elseif selectedOption == 1 then
     senderID,message = rednet.recv()
     message = decomposeMessage(message)
     if senderID == serverID and message[1] == "withdraw" and message[2] == "item" and message[3] == "list" then
-        options = []
-        quantities = []
+        options = {}
+        quantities = {}
         options_count = 0
         for i = 4, #message, 1 do
             options_count += 1
