@@ -8,11 +8,11 @@ function drawStartScreen(selectedOption)
     term.setCursorPos(2,2)
     if selectedOption == 0 then
         term.write("-> Deposit")
-        term.serCursorPos(3,2)
+        term.setCursorPos(3,2)
         term.write("   Withdraw")
     elseif selectedOption == 1 then
         term.write("   Deposit")
-        term.serCursorPos(3,2)
+        term.setCursorPos(3,2)
         term.write("-> Withdraw")
     end
 end
@@ -50,11 +50,11 @@ function drawDepositConfirmationScreen(itemCount,amount,selectedOption)
     term.setCursorPos(9,2)
     if selectedOption == 0 then
         term.write("-> Confirm")
-        term.serCursorPos(10,2)
+        term.setCursorPos(10,2)
         term.write("   Cancel")
     elseif selectedOption == 1 then
         term.write("   Confirm")
-        term.serCursorPos(10,2)
+        term.setCursorPos(10,2)
         term.write("-> Cancel")
     end
 end
@@ -98,9 +98,9 @@ while true do
     drawStartScreen(selectedOption)
     local event, key = os.pullEvent("key")
     if key == keys.up and selectedOption > 0 then
-        selectedOption -= 1
+        selectedOption = selectedOption - 1
     elseif key == keys.down and selectedOption < 1 then
-        selectedOption +=1
+        selectedOption = selectedOption + 1
     elseif key == keys.enter then
         break
     end
@@ -136,9 +136,9 @@ if selectedOption == 0 then
         drawDepositConfirmationScreen(item_count,amount,selectedOption)
         local event, key = os.pullEvent("key")
         if key == keys.up and selectedOption > 0 then
-            selectedOption -= 1
+            selectedOption = selectedOption -1
         elseif key == keys.down and selectedOption < 1 then
-            selectedOption +=1
+            selectedOption = selectedOption + 1
         elseif key == keys.enter then
             break
         end
